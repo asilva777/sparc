@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
-
+db_config.php
 # Ignore OS system files
 .DS_Store
 Thumbs.db
