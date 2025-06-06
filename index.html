@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SPARC Assessment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>SME Disaster Preparedness and Resilience Check (SPARC)</h1>
+      <p>Assess your business's resilience using the CASE Equation.</p>
+    </header>
+
+    <form id="sparcForm">
+      <section>
+        <h2>Coping Capacity (C)</h2>
+        <label for="coping">Rate your coping capacity (1-5):</label>
+        <input type="number" id="coping" name="coping" min="1" max="5" required />
+      </section>
+
+      <section>
+        <h2>Adaptability (A)</h2>
+        <label for="adaptability">Rate your adaptability (1-5):</label>
+        <input type="number" id="adaptability" name="adaptability" min="1" max="5" required />
+      </section>
+
+      <section>
+        <h2>Sensitivity (S)</h2>
+        <label for="sensitivity">Rate your sensitivity (1-5):</label>
+        <input type="number" id="sensitivity" name="sensitivity" min="1" max="5" required />
+      </section>
+
+      <section>
+        <h2>Exposure (E)</h2>
+        <label for="exposure">Rate your exposure (1-5):</label>
+        <input type="number" id="exposure" name="exposure" min="1" max="5" required />
+      </section>
+
+      <button type="submit">Calculate Resilience Score</button>
+    </form>
+
+    <div id="result" class="result hidden">
+      <h2>Your Resilience Score:</h2>
+      <p id="score"></p>
+      <p id="interpretation"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
