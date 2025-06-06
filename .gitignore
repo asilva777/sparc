@@ -7,6 +7,23 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+# Ignore OS system files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.*
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
