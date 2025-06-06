@@ -1,54 +1,44 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('sparcForm');
-  const resultDiv = document.getElementById('result');
-  const scoreParagraph = document.getElementById('score');
-  const interpretationParagraph = document.getElementById('interpretation');
+document.getElementById("sparcForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  const inputs = Array.from(document.querySelectorAll('input[type="number"]')).map(input =>
+    parseInt(input.value)
+  );
 
-    const coping = parseInt(document.getElementById('coping').value, 10);
-    const adaptability = parseInt(document.getElementById('adaptability').value, 10);
-    const sensitivity = parseInt(document.getElementById('sensitivity').value, 10);
-    const exposure = parseInt(document.getElementById('exposure').value, 10);
+  const avg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
-    const resilienceScore = (coping + adaptability) - (sensitivity + exposure);
+  const coping = inputs.slice(0, 5);
+  const adaptability = inputs.slice(5, 10);
+  const sensitivity = inputs.slice(10, 15);
+  const exposure = inputs.slice(15, 20);
 
-    scoreParagraph.textContent = `Resilience Score: ${resilienceScore}`;
+  const avgC = avg(coping);
+  const avgA = avg(adaptability);
+  const avgS = avg(sensitivity);
+  const avgE = avg(exposure);
 
-    let interpretation = '';
-    if (resilienceScore >= 6) {
-      interpretation = 'Excellent resilience. Your business is well-prepared for disasters.';
-    } else if (resilienceScore >= 3) {
-      interpretation = 'Good resilience. There is room for improvement.';
-    } else if (resilienceScore >= 0) {
-      interpretation = 'Moderate resilience. Consider enhancing your preparedness strategies.';
-    } else {
-      interpretation = 'Low resilience. Immediate action is recommended to improve disaster preparedness.';
-    }
+  const resilienceScore = (avgC + avgA) - (avgS + avgE);
 
-    // Personalized recommendations
-    let recommendations = '<h3>Personalized Recommendations:</h3><ul>';
+  let interpretation = '';
+  if (resilienceScore >= 6) {
+    interpretation = "🏆 Excellent resilience. Your business is well-prepared for disasters.";
+  } else if (resilienceScore >= 3) {
+    interpretation = "✅ Good resilience. There's some room for improvement.";
+  } else if (resilienceScore >= 0) {
+    interpretation = "⚠️ Moderate resilience. Consider strengthening weak areas.";
+  } else {
+    interpretation = "❗ Low resilience. Immediate action is recommended.";
+  }
 
-    if (coping <= 2) {
-      recommendations += '<li><strong>Coping Capacity:</strong> Develop contingency plans and train staff on emergency response protocols.</li>';
-    }
+  document.getElementById("score").innerHTML = `<strong>Total Resilience Score:</strong> ${resilienceScore.toFixed(2)}<br>${interpretation}`;
+  document.getElementById("breakdown").innerHTML = `
+    <ul>
+      <li><strong>Avg Coping Capacity (C):</strong> ${avgC.toFixed(2)}</li>
+      <li><strong>Avg Adaptability (A):</strong> ${avgA.toFixed(2)}</li>
+      <li><strong>Avg Sensitivity Reduction (S):</strong> ${avgS.toFixed(2)}</li>
+      <li><strong>Avg Exposure Control (E):</strong> ${avgE.toFixed(2)}</li>
+    </ul>
+  `;
 
-    if (adaptability <= 2) {
-      recommendations += '<li><strong>Adaptability:</strong> Increase organizational flexibility by adopting digital tools and encouraging innovation.</li>';
-    }
-
-    if (sensitivity >= 4) {
-      recommendations += '<li><strong>Sensitivity:</strong> Reduce reliance on vulnerable resources and diversify your supply chain.</li>';
-    }
-
-    if (exposure >= 4) {
-      recommendations += '<li><strong>Exposure:</strong> Assess geographic and operational risks and invest in risk mitigation strategies.</li>';
-    }
-
-    recommendations += '</ul>';
-
-    interpretationParagraph.innerHTML = `<p>${interpretation}</p>${recommendations}`;
-    resultDiv.classList.remove('hidden');
-  });
+  document.getElementById("result").classList.remove("hidden");
 });
