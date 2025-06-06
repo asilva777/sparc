@@ -1,0 +1,11 @@
+{
+  "firstName": "Maria",
+  "lastName": "Silva",
+  "organization": "ASilva Enterprises",
+  "position": "Founder",
+  "email": "maria@asilvainnovations.com",
+  "coping": [4, 3, 4, 5, 4],
+  "adaptability": [4, 4, 5, 4, 3],
+  "sensitivity": [3, 2, 3, 4, 2],
+  "exposure": [3, 3, 4, 2, 2]
+}
