@@ -9,68 +9,68 @@
 <body>
   <div class="container">
     <header>
-      <h1>SPARC: SME Resilience Check</h1>
-      <p><strong>WELCOME!</strong><br>
-      Disasters can strike at any time, and it's crucial for SMEs to be prepared.<br>
-      The SME Disaster Preparedness and Resilience Check (SPARC) uses the CASE Equation:<br>
-      <strong>Resilience = (Coping + Adaptability) - (Sensitivity + Exposure)</strong>
-      </p>
-      <p class="consent">
-        By proceeding, you consent to the collection of your personal information solely for resilience evaluation. All data is confidential.
-      </p>
+      <h1>SPARC Resilience Check</h1>
+      <p>Use the CASE equation to assess your business’s disaster preparedness.</p>
     </header>
 
     <form id="sparcForm">
-      <fieldset>
-        <legend>Personal Information</legend>
-        <label>First Name: <input type="text" maxlength="140" required></label>
-        <label>Last Name: <input type="text" maxlength="140" required></label>
-        <label>Organization / Enterprise: <input type="text" maxlength="140" required></label>
-        <label>Position / Designation: <input type="text" maxlength="140" required></label>
-        <label>Email & Contact Number: <input type="text" maxlength="140" required></label>
-      </fieldset>
 
-      <fieldset>
-        <legend>Coping Capacity (C)</legend>
+      <div class="card" id="step-0">
+        <h2>Personal Information</h2>
+        <label>First Name: <input type="text" name="firstName" required></label>
+        <label>Last Name: <input type="text" name="lastName" required></label>
+        <label>Email: <input type="email" name="email" required></label>
+        <button type="button" onclick="nextStep()">Proceed</button>
+      </div>
+
+      <div class="card hidden" id="step-1">
+        <h2>Coping Capacity</h2>
         <label>Emergency funds available: <input type="number" min="1" max="5" required></label>
         <label>Emergency supplies maintained: <input type="number" min="1" max="5" required></label>
         <label>Staff trained for response: <input type="number" min="1" max="5" required></label>
         <label>Roles during crisis are clear: <input type="number" min="1" max="5" required></label>
-        <label>Rapid communication protocols: <input type="number" min="1" max="5" required></label>
-      </fieldset>
+        <label>Communication protocols: <input type="number" min="1" max="5" required></label>
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Proceed</button>
+      </div>
 
-      <fieldset>
-        <legend>Adaptability (A)</legend>
+      <div class="card hidden" id="step-2">
+        <h2>Adaptability</h2>
         <label>Business continuity plan: <input type="number" min="1" max="5" required></label>
-        <label>Quick operational adaptation: <input type="number" min="1" max="5" required></label>
-        <label>Adapted to recent changes: <input type="number" min="1" max="5" required></label>
-        <label>Staff innovate under pressure: <input type="number" min="1" max="5" required></label>
-        <label>Learning from disruptions: <input type="number" min="1" max="5" required></label>
-      </fieldset>
+        <label>Can adapt quickly: <input type="number" min="1" max="5" required></label>
+        <label>Learning from changes: <input type="number" min="1" max="5" required></label>
+        <label>Encouraged innovation: <input type="number" min="1" max="5" required></label>
+        <label>Operations adapted post-crisis: <input type="number" min="1" max="5" required></label>
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Proceed</button>
+      </div>
 
-      <fieldset>
-        <legend>Sensitivity Reduction (S)</legend>
-        <label>Risk/vulnerability assessment done: <input type="number" min="1" max="5" required></label>
-        <label>Backups of systems/data: <input type="number" min="1" max="5" required></label>
-        <label>Operations avoid single failure: <input type="number" min="1" max="5" required></label>
-        <label>Asset protection measures: <input type="number" min="1" max="5" required></label>
-        <label>Disaster insurance coverage: <input type="number" min="1" max="5" required></label>
-      </fieldset>
+      <div class="card hidden" id="step-3">
+        <h2>Sensitivity Reduction</h2>
+        <label>Risk assessment done: <input type="number" min="1" max="5" required></label>
+        <label>Backups in place: <input type="number" min="1" max="5" required></label>
+        <label>No single failure points: <input type="number" min="1" max="5" required></label>
+        <label>Asset protection: <input type="number" min="1" max="5" required></label>
+        <label>Insurance coverage: <input type="number" min="1" max="5" required></label>
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Proceed</button>
+      </div>
 
-      <fieldset>
-        <legend>Exposure Control (E)</legend>
-        <label>Located in safe zone: <input type="number" min="1" max="5" required></label>
-        <label>Low-risk supplier regions: <input type="number" min="1" max="5" required></label>
+      <div class="card hidden" id="step-4">
+        <h2>Exposure Control</h2>
+        <label>Safe location: <input type="number" min="1" max="5" required></label>
+        <label>Low-risk suppliers: <input type="number" min="1" max="5" required></label>
         <label>Resilient utilities: <input type="number" min="1" max="5" required></label>
-        <label>Partners are disaster-ready: <input type="number" min="1" max="5" required></label>
-        <label>Diverse assets/customers: <input type="number" min="1" max="5" required></label>
-      </fieldset>
+        <label>Partner readiness: <input type="number" min="1" max="5" required></label>
+        <label>Diverse customers: <input type="number" min="1" max="5" required></label>
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="submit">Calculate Resilience</button>
+      </div>
 
-      <button type="submit">Calculate Resilience</button>
     </form>
 
-    <div id="result" class="result hidden">
-      <h2>Assessment Results</h2>
+    <div id="result" class="card hidden">
+      <h2>Your Resilience Score</h2>
       <p id="score"></p>
       <div id="breakdown"></div>
     </div>
