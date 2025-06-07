@@ -1,15 +1,15 @@
 let currentStep = 0;
-const totalSteps = 5;
+const steps = document.querySelectorAll(".card");
 
-function showStep(step) {
-  document.querySelectorAll('.card').forEach((card, index) => {
-    card.classList.add('hidden');
-    if (index === step) card.classList.remove('hidden');
+function showStep(index) {
+  steps.forEach((step, i) => {
+    step.classList.add("hidden");
+    if (i === index) step.classList.remove("hidden");
   });
 }
 
 function nextStep() {
-  if (currentStep < totalSteps - 1) {
+  if (currentStep < steps.length - 2) {
     currentStep++;
     showStep(currentStep);
   }
@@ -23,7 +23,7 @@ function prevStep() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  showStep(0); // Show personal info step
+  showStep(currentStep);
 
   document.getElementById("sparcForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -47,15 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const score = (avgC + avgA) - (avgS + avgE);
 
     let feedback = "";
-    if (score >= 6) {
-      feedback = "🏆 Excellent resilience.";
-    } else if (score >= 3) {
-      feedback = "✅ Good resilience.";
-    } else if (score >= 0) {
-      feedback = "⚠️ Moderate resilience.";
-    } else {
-      feedback = "❗ Low resilience.";
-    }
+    if (score >= 6) feedback = "🏆 Excellent resilience.";
+    else if (score >= 3) feedback = "✅ Good resilience.";
+    else if (score >= 0) feedback = "⚠️ Moderate resilience.";
+    else feedback = "❗ Low resilience.";
 
     document.getElementById("score").innerHTML = `<strong>Score:</strong> ${score.toFixed(2)}<br>${feedback}`;
     document.getElementById("breakdown").innerHTML = `
@@ -66,6 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <li>Avg Exposure: ${avgE.toFixed(2)}</li>
       </ul>
     `;
-    showStep(totalSteps); // show result card
+    showStep(steps.length - 1);
   });
 });
