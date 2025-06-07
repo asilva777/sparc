@@ -30,6 +30,9 @@ document.getElementById("sparcForm").addEventListener("submit", function (e) {
     interpretation = "❗ Low resilience. Immediate action is recommended.";
   }
 
+document.getElementById("result").classList.remove("hidden");
+document.getElementById("score").textContent = `Your score is ${resilienceScore}`;
+
   document.getElementById("score").innerHTML = `<strong>Total Resilience Score:</strong> ${resilienceScore.toFixed(2)}<br>${interpretation}`;
   document.getElementById("breakdown").innerHTML = `
     <ul>
