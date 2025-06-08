@@ -8,12 +8,20 @@ body {
 }
 
 .container {
-  max-width: 700px;
+  max-width: 850px;
   margin: auto;
   background: white;
-  padding: 25px;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 8px;
   box-shadow: 0 0 10px #ccc;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #2c3e50;
 }
 
 .card {
@@ -50,8 +58,20 @@ button:hover {
   background: #219150;
 }
 
+.result {
+  background: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  border-left: 5px solid #27ae60;
+
 .hidden {
   display: none;
+}
+
+.consent {
+  font-size: 0.9em;
+  color: #555;
 }
 
 @keyframes fadeIn {
