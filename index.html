@@ -15,7 +15,7 @@
     </header>
 
     <form id="sparcForm">
-      <!-- STEP 0 -->
+
       <div class="card" id="step-0">
         <h2>Personal Information</h2>
         <label>First Name: <input type="text" name="firstName" required></label>
@@ -26,10 +26,38 @@
         <button type="button" onclick="nextStep()">Proceed</button>
       </div>
 
-      <!-- STEP 1 to 4: CASE FORM -->
-      <!-- (Use same content as before for Coping, Adaptability, Sensitivity, Exposure cards) -->
+    <div class="card hidden" id="step-1">
+        <h2>Coping Capacity</h2>
+        <label>Emergency funds available: <input type="number" min="1" max="5" required></label>
+        <label>Emergency supplies maintained: <input type="number" min="1" max="5" required></label>
+        <label>Staff trained for response: <input type="number" min="1" max="5" required></label>
+        <label>Roles during crisis are clear: <input type="number" min="1" max="5" required></label>
+        <label>Communication protocols: <input type="number" min="1" max="5" required></label>
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Proceed</button>
+      </div>
 
-      <!-- Final Submit -->
+      <div class="card hidden" id="step-2">
+        <h2>Adaptability</h2>
+        <label>Business continuity plan: <input type="number" min="1" max="5" required></label>
+        <label>Can adapt quickly: <input type="number" min="1" max="5" required></label>
+        <label>Learning from changes: <input type="number" min="1" max="5" required></label>
+        <label>Encouraged innovation: <input type="number" min="1" max="5" required></label>
+        <label>Operations adapted post-crisis: <input type="number" min="1" max="5" required></label>
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Proceed</button>
+      </div>
+
+      <div class="card hidden" id="step-3">
+        <h2>Sensitivity Reduction</h2>
+        <label>Risk assessment done: <input type="number" min="1" max="5" required></label>
+        <label>Backups in place: <input type="number" min="1" max="5" required></label>
+        <label>No single failure points: <input type="number" min="1" max="5" required></label>
+        <label>Asset protection: <input type="number" min="1" max="5" required></label>
+        <label>Insurance coverage: <input type="number" min="1" max="5" required></label>
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Proceed</button>
+      </div>
       <div class="card hidden" id="step-4">
         <h2>Exposure Control</h2>
         <label>Safe location: <input type="number" min="1" max="5" required></label>
