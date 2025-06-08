@@ -14,6 +14,7 @@
       Disasters can strike at any time, and it's crucial for SMEs to be prepared.<br>
       The SME Disaster Preparedness and Resilience Check (SPARC) uses the CASE Equation:<br>
       <strong>Resilience = (Coping + Adaptability) - (Sensitivity + Exposure)</strong>
+      <br>Please rate each statement on a scale from 1 (Strongly Disagree / Not at all) to 5 (Strongly Agree / Fully implemented):<br>  
       </p>
       <p class="consent">
         By proceeding, you consent to the collection of your personal information solely for resilience evaluation. All data is confidential.
@@ -29,48 +30,59 @@
         <label>Organization: <input type="text" name="organization" required></label>
         <label>Position: <input type="text" name="position" required></label>
         <label>Email & Contact Number: <input type="text" name="contact" required></label>
-        <button type="button" onclick="nextStep()">Proceed</button>
+        <button type="button" onclick="nextStep()">Next</button>
       </div>
 
     <div class="card hidden" id="step-1">
         <h2>Coping Capacity</h2>
-        <label>Emergency funds available: <input type="number" min="1" max="5" required></label>
-        <label>Emergency supplies maintained: <input type="number" min="1" max="5" required></label>
-        <label>Staff trained for response: <input type="number" min="1" max="5" required></label>
-        <label>Roles during crisis are clear: <input type="number" min="1" max="5" required></label>
-        <label>Communication protocols: <input type="number" min="1" max="5" required></label>
+        <label>Emergency Funds: Our business has sufficient emergency funds to sustain operations during a crisis. <input type="number" min="1" max="5" required></label>
+        <label>Emergency Supplies: We maintain up-to-date emergency supplies (e.g., first aid, food, water, power backup). <input type="number" min="1" max="5" required></label>
+        <label>Staff Preparedness: All staff are trained and regularly updated on emergency response procedures.<input type="number" min="1" max="5" required></label>
+        <label>Crisis Roles: Every team member clearly understands their role during a crisis.
+ <input type="number" min="1" max="5" required></label>
+        <label>Communication Protocols: We have reliable and tested communication protocols for emergencies.
+ <input type="number" min="1" max="5" required></label>
         <button type="button" onclick="prevStep()">Back</button>
         <button type="button" onclick="nextStep()">Proceed</button>
       </div>
 
       <div class="card hidden" id="step-2">
         <h2>Adaptability</h2>
-        <label>Business continuity plan: <input type="number" min="1" max="5" required></label>
-        <label>Can adapt quickly: <input type="number" min="1" max="5" required></label>
-        <label>Learning from changes: <input type="number" min="1" max="5" required></label>
-        <label>Encouraged innovation: <input type="number" min="1" max="5" required></label>
-        <label>Operations adapted post-crisis: <input type="number" min="1" max="5" required></label>
+        <label>Continuity Planning: A comprehensive and current business continuity plan is in place. <input type="number" min="1" max="5" required></label>
+        <label>Recovery: Our organization can quickly recover to unexpected changes or disruptions.
+ <input type="number" min="1" max="5" required></label>
+        <label>Learning Culture: We actively learn from past disruptions and integrate lessons into our planning.
+ <input type="number" min="1" max="5" required></label>
+        <label>Innovation Encouragement: Innovation is encouraged to improve resilience and continuity.
+ <input type="number" min="1" max="5" required></label>
+        <label>Post-Crisis Adaptation: Our operations have been successfully adapted following past crises.
+ <input type="number" min="1" max="5" required></label>
         <button type="button" onclick="prevStep()">Back</button>
         <button type="button" onclick="nextStep()">Proceed</button>
       </div>
 
       <div class="card hidden" id="step-3">
         <h2>Sensitivity Reduction</h2>
-        <label>Risk assessment done: <input type="number" min="1" max="5" required></label>
-        <label>Backups in place: <input type="number" min="1" max="5" required></label>
-        <label>No single failure points: <input type="number" min="1" max="5" required></label>
-        <label>Asset protection: <input type="number" min="1" max="5" required></label>
-        <label>Insurance coverage: <input type="number" min="1" max="5" required></label>
+        <label>Risk Assessment: We regularly conduct thorough risk assessments across all business areas.
+<input type="number" min="1" max="5" required></label>
+        <label>Data & System Backups: We have secure and tested backups for critical data and systems.
+<input type="number" min="1" max="5" required></label>
+        <label>Single Points of Failure: We have identified and mitigated any single points of failure in our operations.
+ <input type="number" min="1" max="5" required></label>
+        <label>Asset Protection: Our physical and digital assets are well-protected against theft, damage, or loss.<input type="number" min="1" max="5" required></label>
+        <label>Insurance Coverage: Our insurance coverage adequately protects against major business risks. <input type="number" min="1" max="5" required></label>
         <button type="button" onclick="prevStep()">Back</button>
         <button type="button" onclick="nextStep()">Proceed</button>
       </div>
       <div class="card hidden" id="step-4">
         <h2>Exposure Control</h2>
-        <label>Safe location: <input type="number" min="1" max="5" required></label>
-        <label>Low-risk suppliers: <input type="number" min="1" max="5" required></label>
-        <label>Resilient utilities: <input type="number" min="1" max="5" required></label>
-        <label>Partner readiness: <input type="number" min="1" max="5" required></label>
-        <label>Diverse customers: <input type="number" min="1" max="5" required></label>
+        <label>Safe Location: Our business operates in a location that is considered safe from natural and man-made hazards. <input type="number" min="1" max="5" required></label>
+        <label>Low-Risk Suppliers: We evaluate and work with suppliers who pose minimal risk to our supply chain.
+ <input type="number" min="1" max="5" required></label>
+        <label>Resilient Utilities: Our utility services (e.g., power, water, internet) are reliable and have contingency options. <input type="number" min="1" max="5" required></label>
+        <label>Partner Readiness: Our key partners and vendors have their own business continuity plans in place.
+<input type="number" min="1" max="5" required></label>
+        <label>Customer Diversity: Our customer base is diverse enough to reduce dependency on any single market or client.<input type="number" min="1" max="5" required></label>
         <button type="button" onclick="prevStep()">Back</button>
         <button type="submit">Calculate Resilience</button>
       </div>
