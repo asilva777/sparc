@@ -2,9 +2,10 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
+  background-color:  #f9f9f9;
+  color: #333;
+  padding: 20px;
+  line-height: 1.6;
 }
 
 .container {
@@ -24,32 +25,37 @@ header h1 {
   color: #2c3e50;
 }
 
-.card {
-  display: none;
-  animation: fadeIn 0.3s ease-in;
+fieldset {
+  margin: 20px 0;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
-.card h2 {
-  margin-top: 0;
+legend {
+  font-weight: bold;
   color: #2c3e50;
 }
 
-.card label {
+label {
   display: block;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
-input {
+input[type="text"],
+input[type="number"] {
   width: 100%;
   padding: 8px;
+  margin-top: 5px;
 }
 
 button {
-  margin: 15px 5px 0 0;
-  padding: 10px 16px;
   background: #27ae60;
   color: white;
+  padding: 12px;
   border: none;
+  font-size: 16px;
+  width: 100%;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -64,6 +70,7 @@ button:hover {
   border-radius: 5px;
   margin-top: 20px;
   border-left: 5px solid #27ae60;
+}
 
 .hidden {
   display: none;
@@ -72,9 +79,4 @@ button:hover {
 .consent {
   font-size: 0.9em;
   color: #555;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
