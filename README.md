@@ -1,6 +1,3 @@
-## 📁 `SPARC-Frontend/README.md`
-
-````markdown
 # SPARC-Frontend
 
 This is the official frontend for the **SPARC (SME Disaster Preparedness and Resilience Check)** tool. It allows users to assess their resilience using the CASE Equation and receive personalized insights and recommendations.
@@ -15,7 +12,6 @@ To deliver a user-friendly interface for SME users to input their disaster prepa
 - Personal information collection with consent
 - Responsive UI with styled form and results
 - Result breakdown by Coping, Adaptability, Sensitivity, Exposure
-- Hooks to backend for AI recommendations and score storage
 
 ## 🛠️ Technologies
 
@@ -45,8 +41,6 @@ serve .
 ````
 
 ---
-
-## 📁 `SPARC-Backend/README.md`
 
 ```markdown
 # SPARC-Backend
@@ -88,8 +82,6 @@ Configure `.env` for DB and email credentials.
 ````
 
 ---
-
-## 📁 `SPARC-AI/README.md`
 
 ```markdown
 # SPARC-AI
@@ -137,8 +129,6 @@ Use `ngrok` or deploy on HuggingFace Spaces, AWS, or Render.
 
 ---
 
-## 📁 `SPARC-NLG/README.md`
-
 ```markdown
 # SPARC-NLG
 
@@ -172,8 +162,6 @@ Use responsibly for non-commercial purposes unless fine-tuned model is publicly 
 ````
 
 ---
-
-## 📁 `SPARC-Chatbot/README.md`
 
 ```markdown
 # SPARC-Chatbot
@@ -212,15 +200,8 @@ Embed Rasa Webchat into SPARC-Frontend using:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.min.js"></script>
-```
-
-````
-
 ---
 
-## 📁 `SPARC-Dashboard/README.md`
-
-```markdown
 # SPARC-Dashboard
 
 This repo includes data visualization tools and components to graphically present SPARC resilience scores, trends, and improvements.
@@ -252,10 +233,3 @@ new Chart(ctx, {
 ## 📦 Hosting
 
 Can be embedded in `SPARC-Frontend` or hosted as a separate admin view.
-
-```
-
----
-
-Would you like ZIP-ready versions of these with starter code files next? Or GitHub-ready repo setup scripts? Let’s keep this momentum going! 🔧🤖📁
-```
