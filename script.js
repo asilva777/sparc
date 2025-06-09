@@ -27,6 +27,38 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("sparcForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
+    function generateQuestions(container, data) {
+  for (const [section, questions] of Object.entries(data)) {
+    const sectionHeader = document.createElement("h3");
+    sectionHeader.textContent = section;
+    container.appendChild(sectionHeader);
+
+    questions.forEach((text, index) => {
+      const questionDiv = document.createElement("div");
+      questionDiv.className = "question";
+      questionDiv.innerHTML = `
+        <p>${text}</p>
+        <div class="rating">
+          ${[1,2,3,4,5].map(value => `
+            <label>
+              <input type="radio" name="${section}-${index}" value="${value}" required>
+              ${value}
+            </label>
+          `).join('')}
+        </div>
+      `;
+      container.appendChild(questionDiv);
+    });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const challengeContainer = document.querySelector(".question-set");
+  const rolesContainer = document.getElementById("roles-section");
+  generateQuestions(challengeContainer, challenges);
+  generateQuestions(rolesContainer, roles);
+
+
     const inputs = Array.from(document.querySelectorAll('input[type="number"]')).map(input =>
       parseInt(input.value)
     );
