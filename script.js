@@ -47,16 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let interpretation = '';
     let recommendation = '';
 
-    if (resilienceScore >= 6) {
+    if (resilienceScore >= 5) {
       interpretation = "🏆 Excellent resilience.You’re leading the way in organizational resilience."
       recommendation = "Your proactive strategies across Coping Capacity, Adaptability, Sensitivity Reduction, and Exposure Control are commendable. To maintain momentum and future-proof your resilience strategy, explore advanced tools and insights from ASilva Innovations’[RESOURCES](https://asilvainnovations.com/resources)— including case studies, toolkits, and thought leadership.";
     } else if (resilienceScore >= 3) {
       interpretation = "✅ Good resilience. You’re on the right track—keep building on your strengths."
       recommendation = "Your organization demonstrates solid resilience foundations. To elevate your capabilities and close remaining gaps, consider exploring ASilva Innovations’ [SOLUTIONS](https://asilvainnovations.com/solutions2)for tailored support in business continuity, risk management, and adaptive planning.";
-    } else if (resilienceScore >= 0) {
+    } else if (resilienceScore >= 2) {
       interpretation = "⚠️ Moderate resilience. You’ve made progress, but key vulnerabilities remain.";
       recommendation = "Now is the time to strengthen your weaker areas—especially in adaptability and exposure control. Leverage expert guidance and practical tools from ASilva Innovations’[SERVICES](https://asilvainnovations.com/services) to build a more robust and responsive resilience framework.";
-    } else {
+    } else (resilienceScore >= 1) { 
       interpretation = "❗ Low resilience. Immediate action is needed to protect your business.";
       recommendation = "Act now. Your current resilience posture leaves your organization highly vulnerable to disruptions. Start building a solid foundation today with ASilva Innovations’ [DDRiVE](](https://asilvainnovations.com/ddrive)—an integrated risk management solution designed to help you assess, plan, and implement resilience strategies across all CASE dimensions.";
     }
