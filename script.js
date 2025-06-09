@@ -82,18 +82,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (resilienceScore >= 4.5) {
       interpretation = "🏆 Excellent resilience. You’re leading the way in organizational resilience.";
-      recommendation = "Your proactive strategies across Coping Capacity, Adaptability, Sensitivity Reduction, and Exposure Control are commendable. To maintain momentum and future-proof your strategy, explore ASilva Innovations’ [RESOURCES](https://asilvainnovations.com/resources)—including case studies, toolkits, and thought leadership.";
+      recommendation = "Your proactive strategies across Coping Capacity, Adaptability, Sensitivity Reduction, and Exposure Control are commendable. To maintain momentum and future-proof your strategy, explore ASilva Innovations’RESOURCES including relevant articles, toolkits, and thought leadership.";
+      <div class="button-group">
+      <a href="https://asilvainnovations.com/resources" class="btn primary" target="_blank">EXPLORE RESOURCES</a>
+      <a href="https://asilvainnovations.com/ddrive" class="btn secondary" target="_blank">BACK TO HOME</a> </div>`;
+    }
     } else if (resilienceScore >= 3.5) {
-      interpretation = "✅ Good resilience. You’re on the right track—keep building on your strengths.";
-      recommendation = "Your organization demonstrates solid foundations. To elevate capabilities and close remaining gaps, explore ASilva Innovations’ [SOLUTIONS](https://asilvainnovations.com/solutions2) for tailored support.";
+      interpretation = "✅ Good resilience. You’re on the right track—keep building on your strengths."
+      recommendation = "Your organization demonstrates solid foundations. To elevate capabilities and close remaining gaps, explore ASilva Innovations’ Solutions for tailored support";
+      <div class="button-group">
+      <a href="https://asilvainnovations.com/solutions" class="btn primary" target="_blank">EXPLORE SOLUTIONS</a>
+      <a href="https://asilvainnovations.com/ddrive" class="btn secondary" target="_blank">BACK TO HOME</a></div>`;
+      }
     } else if (resilienceScore >= 2.5) {
       interpretation = "⚠️ Moderate resilience. You’ve made progress, but key vulnerabilities remain.";
-      recommendation = "Now is the time to strengthen adaptability and exposure control. Leverage practical tools from ASilva Innovations’ [SERVICES](https://asilvainnovations.com/services).";
+      recommendation = "Now is the time to strengthen adaptability and exposure control. Leverage practical tools from ASilva Innovations’ SERVICES.
+    <div class="button-group">
+      <a href="https://asilvainnovations.com/services" class="btn primary" target="_blank">EXPLORE SERVICES</a>
+      <a href="https://asilvainnovations.com/ddrive" class="btn secondary" target="_blank">BACK TO HOME</a></div>`;
     } else {
       interpretation = "❗ Low resilience. Immediate action is needed to protect your business.";
-      recommendation = "Your current posture leaves your organization highly vulnerable. Start building a foundation today with ASilva Innovations’ [DDRiVE](https://asilvainnovations.com/ddrive)—a robust risk management solution.";
-    }
-
+      recommendation = "Your current posture leaves your organization highly vulnerable. Start building a foundation today with ASilva Innovations’ DDRiVE—a robust risk management solution.";
+     <div class="button-group">
+      <a href="https://asilvainnovations.com/ddrive" class="btn primary" target="_blank">EXPLORE DDRiVE</a></div>`;
+}
     document.getElementById("result").classList.remove("hidden");
     document.getElementById("score").innerHTML = `<strong>Average Resilience Score:</strong> ${resilienceScore.toFixed(2)}<br>${interpretation}`;
     document.getElementById("breakdown").innerHTML = `
