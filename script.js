@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
   generateQuestions(challengeContainer, challenges);
   generateQuestions(rolesContainer, roles);
 
-
     const inputs = Array.from(document.querySelectorAll('input[type="number"]')).map(input =>
       parseInt(input.value)
     );
@@ -87,22 +86,25 @@ document.addEventListener("DOMContentLoaded", () => {
       <a href="https://asilvainnovations.com/resources" class="btn primary" target="_blank">EXPLORE RESOURCES</a>
       <a href="https://asilvainnovations.com/ddrive" class="btn secondary" target="_blank">BACK TO HOME</a> </div>`;
     }
+    
     } else if (resilienceScore >= 3.5) {
-      interpretation = "✅ Good resilience. You’re on the right track—keep building on your strengths."
+      interpretation = "✅ Good resilience. You’re on the right track—keep building on your strengths";
       recommendation = "Your organization demonstrates solid foundations. To elevate capabilities and close remaining gaps, explore ASilva Innovations’ Solutions for tailored support";
       <div class="button-group">
       <a href="https://asilvainnovations.com/solutions" class="btn primary" target="_blank">EXPLORE SOLUTIONS</a>
-      <a href="https://asilvainnovations.com/ddrive" class="btn secondary" target="_blank">BACK TO HOME</a></div>`;
+      <a href="https://asilvainnovations.com/ddrive" class="btn secondary" target="_blank">BACK TO HOME</a></div>';
       }
+    
     } else if (resilienceScore >= 2.5) {
       interpretation = "⚠️ Moderate resilience. You’ve made progress, but key vulnerabilities remain.";
-      recommendation = "Now is the time to strengthen adaptability and exposure control. Leverage practical tools from ASilva Innovations’ SERVICES.
+      recommendation = "Now is the time to strengthen adaptability and exposure control. Leverage practical tools from ASilva Innovations’ SERVICES.;
     <div class="button-group">
       <a href="https://asilvainnovations.com/services" class="btn primary" target="_blank">EXPLORE SERVICES</a>
       <a href="https://asilvainnovations.com/ddrive" class="btn secondary" target="_blank">BACK TO HOME</a></div>`;
+   
     } else {
       interpretation = "❗ Low resilience. Immediate action is needed to protect your business.";
-      recommendation = "Your current posture leaves your organization highly vulnerable. Start building a foundation today with ASilva Innovations’ DDRiVE—a robust risk management solution.";
+      recommendation = "Your current posture leaves your organization highly vulnerable. Start building a foundation today with ASilva Innovations’ DDRiVE—a robust risk management solution";
      <div class="button-group">
       <a href="https://asilvainnovations.com/ddrive" class="btn primary" target="_blank">EXPLORE DDRiVE</a></div>`;
 }
