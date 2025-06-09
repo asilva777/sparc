@@ -1,76 +1,120 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color:  #f9f9f9;
-  color: #333;
+  background-color: #f8f9fa;
+  margin: 0;
   padding: 20px;
-  line-height: 1.6;
 }
 
 .container {
-  max-width: 850px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #ccc;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
 }
 
 fieldset {
-  margin: 20px 0;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-legend {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-label {
-  display: block;
-  margin: 10px 0;
+  border: none;
+  padding: 0;
+  margin-bottom: 30px;
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="email"],
+input[type="tel"] {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-button {
-  margin-top: 20px;
-  background: #0000ff;
-  color: white;
-  padding: 12px;
-  border: none;
-  font-size: 16px;
-  width: 50%;
-  border-radius: 4px;
-  cursor: pointer;
+.question {
   margin-bottom: 20px;
 }
 
-button:hover {
-  background: ##87cefa;
+.question p {
+  font-weight: bold;
 }
 
-.result {
-  background: #ecf0f1;
-  padding: 20px;
+.rating {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.rating label {
+  margin-right: 10px;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 15px 30px;
   border-radius: 5px;
-  margin-top: 20px;
-  border-left: 5px solid #27ae60;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin: 30px auto 0;
 }
 
-.hidden {
-  display: none;
+button:hover {
+  background-color: #0056b3;
 }
 
-.consent {
-  font-size: 0.9em;
-  color: #555;
+#result {
+  text-align: center;
+  margin-top: 30px;
+}
+/* Responsive Layout for PWA & Mobile Devices */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .rating {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rating label {
+    margin-bottom: 8px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .question {
+    padding-bottom: 15px;
+  }
 }
