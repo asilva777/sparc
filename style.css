@@ -67,6 +67,12 @@ button:focus,
 }
 
 .question p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.question p {
   white-space: normal;
   font-weight: bold;
   margin-bottom: 5px;
