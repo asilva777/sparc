@@ -4,193 +4,448 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SPARC Resilience Check</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Montserrat', sans-serif;}
+    .hidden { display: none !important;}
+    .fade-in { animation: fadeIn 0.8s;}
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .step-indicator .active { font-weight: bold; border-bottom: 2px solid #0d6efd;}
+    .is-invalid { border-color: #dc3545 !important; }
+    .spinner-overlay {
+      display: none;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(255,255,255,0.7); z-index: 9999;
+      justify-content: center; align-items: center;
+    }
+    .spinner-overlay.active { display: flex; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>SPARC Resilience Check</h1>
+<main>
+  <div class="container py-4">
+
+    <!-- HEADER COMPONENT -->
+    <header class="mb-4">
+      <h1 class="text-center" aria-label="SPARC Resilience Check">SPARC Resilience Check</h1>
     </header>
 
-    <form id="sparcForm">
-      <!-- STEP 0 - Personal Info -->
-      <div class="card" id="step-0">
-        <h2>Personal Information</h2>
-        <label>First Name:
-          <input type="text" name="firstName" required>
-        </label>
-        <label>Last Name:
-          <input type="text" name="lastName" required>
-        </label>
-        <label>Organization / Enterprise:
-          <input type="text" name="organization" required>
-        </label>
-        <label>Position / Designation:
-          <input type="text" name="position" required>
-        </label>
-        <label>Email & Contact Number:
-          <input type="text" name="contact" required>
-        </label>
-        <button type="button" onclick="nextStep()">Proceed</button>
-      </div>
+    <!-- PROGRESS / STEP INDICATOR -->
+    <nav aria-label="form step indicator">
+      <ol class="step-indicator list-inline text-center mb-4">
+        <li class="list-inline-item mx-2 active" id="indicator-0">Personal</li>
+        <li class="list-inline-item mx-2" id="indicator-1">Coping</li>
+        <li class="list-inline-item mx-2" id="indicator-2">Adaptability</li>
+        <li class="list-inline-item mx-2" id="indicator-3">Sensitivity</li>
+        <li class="list-inline-item mx-2" id="indicator-4">Exposure</li>
+        <li class="list-inline-item mx-2" id="indicator-5">Result</li>
+      </ol>
+    </nav>
 
-      <!-- STEP 1 - Coping Capacity -->
-      <div class="card hidden" id="step-1">
-        <h2>Coping Capacity</h2>
-        <label>Are there emergency funds available?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <label>Are emergency supplies maintained?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <label>Are staff regularly trained?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <label>Are roles clearly assigned during crises?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <label>Are communication protocols in place?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <button type="button" onclick="prevStep()">Back</button>
-        <button type="button" onclick="nextStep()">Proceed</button>
-      </div>
+    <!-- FORM COMPONENT -->
+    <form id="sparcForm" aria-label="SPARC Resilience Assessment Form" novalidate autocomplete="off">
+      <!-- STEP 0 - PERSONAL INFO -->
+      <section class="card p-4 mb-3 fade-in" id="step-0" aria-labelledby="personal-info-heading">
+        <!-- Personal Information Step -->
+        <h2 id="personal-info-heading">Personal Information</h2>
+        <!-- If you want to add a logo, use: <img src="your-logo.png" alt="SPARC Logo" class="mb-3" style="max-width:120px;"> -->
 
-      <!-- STEP 2 - Adaptability -->
-      <div class="card hidden" id="step-2">
-        <h2>Adaptability</h2>
-        <label>Is there a business continuity plan?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <label>Can the business adapt operations quickly?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <label>Does it learn from past incidents?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <label>Are innovations encouraged?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <label>Are post-crisis adaptations evaluated?
-          <select required>
-            <option value="">Select (1–5)</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-          </select>
-        </label>
-        <button type="button" onclick="prevStep()">Back</button>
-        <button type="button" onclick="nextStep()">Proceed</button>
-      </div>
+        <div class="mb-3">
+          <label for="firstName" class="form-label" aria-label="First Name">
+            First Name
+            <span data-bs-toggle="tooltip" title="Enter your given name.">(?)</span>
+          </label>
+          <input type="text" class="form-control" id="firstName" name="firstName" required pattern="^[A-Za-z\s\-']{2,}$" title="Please enter a valid first name (at least 2 letters)." aria-label="First Name Input">
+          <div class="invalid-feedback">Please enter a valid first name (at least 2 letters).</div>
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label" aria-label="Last Name">
+            Last Name
+            <span data-bs-toggle="tooltip" title="Enter your family name.">(?)</span>
+          </label>
+          <input type="text" class="form-control" id="lastName" name="lastName" required pattern="^[A-Za-z\s\-']{2,}$" title="Please enter a valid last name (at least 2 letters)." aria-label="Last Name Input">
+          <div class="invalid-feedback">Please enter a valid last name (at least 2 letters).</div>
+        </div>
+        <div class="mb-3">
+          <label for="organization" class="form-label" aria-label="Organization or Enterprise">
+            Organization / Enterprise
+            <span data-bs-toggle="tooltip" title="Enter your company or organization's name.">(?)</span>
+          </label>
+          <input type="text" class="form-control" id="organization" name="organization" required pattern=".{2,}" title="Please enter your organization (at least 2 characters)." aria-label="Organization Input">
+          <div class="invalid-feedback">Please enter your organization (at least 2 characters).</div>
+        </div>
+        <div class="mb-3">
+          <label for="position" class="form-label" aria-label="Position or Designation">
+            Position / Designation
+            <span data-bs-toggle="tooltip" title="Enter your role or designation.">(?)</span>
+          </label>
+          <input type="text" class="form-control" id="position" name="position" required pattern=".{2,}" title="Please enter your position (at least 2 characters)." aria-label="Position Input">
+          <div class="invalid-feedback">Please enter your position (at least 2 characters).</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label" aria-label="Email Address">
+            Email Address
+            <span data-bs-toggle="tooltip" title="Enter a valid email address.">(?)</span>
+          </label>
+          <input type="email" class="form-control" id="email" name="email" required title="Please enter a valid email address." aria-label="Email Input">
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+        <div class="mb-3">
+          <label for="contact" class="form-label" aria-label="Contact Number">
+            Contact Number
+            <span data-bs-toggle="tooltip" title="Include your area code.">(?)</span>
+          </label>
+          <input type="text" class="form-control" id="contact" name="contact" required pattern="^(\+?\d{1,3}[- ]?)?\d{7,15}$" title="Please enter a valid contact number." aria-label="Contact Number Input">
+          <div class="invalid-feedback">Please enter a valid contact number.</div>
+        </div>
+        <button type="button" class="btn btn-primary" aria-label="Proceed to Coping Capacity" id="step0Next">Proceed</button>
+      </section>
 
-      <!-- STEP 3 - Sensitivity Reduction -->
-      <div class="card hidden" id="step-3">
-        <h2>Sensitivity Reduction</h2>
-        <label>Has a risk assessment been conducted?
-          <select required>
+      <!-- STEP 1 - COPING CAPACITY -->
+      <section class="card p-4 mb-3 hidden fade-in" id="step-1" aria-labelledby="coping-capacity-heading">
+        <h2 id="coping-capacity-heading">Coping Capacity</h2>
+        <!-- Each select has a tooltip for help text and validation -->
+        <div class="mb-3">
+          <label aria-label="Emergency funds available">Are there emergency funds available?
+            <span data-bs-toggle="tooltip" title="Funds set aside for emergencies ensure business stability.">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Emergency funds available select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <label>Are data/system backups in place?
-          <select required>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Emergency supplies maintained">Are emergency supplies maintained?
+            <span data-bs-toggle="tooltip" title="Are supplies such as food, water, and first aid regularly checked and stocked?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Emergency supplies maintained select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <label>Are single points of failure minimized?
-          <select required>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Staff regularly trained">Are staff regularly trained?
+            <span data-bs-toggle="tooltip" title="Do you conduct regular emergency training or drills?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Staff regularly trained select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <label>Are critical assets protected?
-          <select required>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Roles clearly assigned during crises">Are roles clearly assigned during crises?
+            <span data-bs-toggle="tooltip" title="Are responsibilities clear for each staff member in an emergency?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Roles clearly assigned select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <label>Is insurance coverage adequate?
-          <select required>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Communication protocols in place">Are communication protocols in place?
+            <span data-bs-toggle="tooltip" title="Are there clear ways to communicate in a crisis?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Communication protocols select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <button type="button" onclick="prevStep()">Back</button>
-        <button type="button" onclick="nextStep()">Proceed</button>
-      </div>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <button type="button" class="btn btn-secondary" aria-label="Back to Personal Info" id="step1Back">Back</button>
+        <button type="button" class="btn btn-primary" aria-label="Proceed to Adaptability" id="step1Next">Proceed</button>
+      </section>
 
-      <!-- STEP 4 - Exposure Control -->
-      <div class="card hidden" id="step-4">
-        <h2>Exposure Control</h2>
-        <label>Is the business located in a safe area?
-          <select required>
+      <!-- STEP 2 - ADAPTABILITY -->
+      <section class="card p-4 mb-3 hidden fade-in" id="step-2" aria-labelledby="adaptability-heading">
+        <h2 id="adaptability-heading">Adaptability</h2>
+        <div class="mb-3">
+          <label aria-label="Business continuity plan">Is there a business continuity plan?
+            <span data-bs-toggle="tooltip" title="A documented plan for continuing operations after a disruption.">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Business continuity plan select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <label>Are suppliers considered low-risk?
-          <select required>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Adapt operations quickly">Can the business adapt operations quickly?
+            <span data-bs-toggle="tooltip" title="How easily can you change processes or products in response to change?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Adapt operations quickly select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <label>Are utilities resilient?
-          <select required>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Learn from past incidents">Does it learn from past incidents?
+            <span data-bs-toggle="tooltip" title="Are lessons learned after incidents used to improve?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Learn from past incidents select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <label>Are partners prepared for disruptions?
-          <select required>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Innovations encouraged">Are innovations encouraged?
+            <span data-bs-toggle="tooltip" title="Are employees encouraged to suggest improvements and new ideas?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Innovations encouraged select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <label>Is your customer base diverse?
-          <select required>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Post-crisis adaptations evaluated">Are post-crisis adaptations evaluated?
+            <span data-bs-toggle="tooltip" title="Is your response after a crisis reviewed and improved?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Post-crisis adaptations select">
             <option value="">Select (1–5)</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
           </select>
-        </label>
-        <button type="button" onclick="prevStep()">Back</button>
-        <button type="submit">Calculate Resilience</button>
-      </div>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <button type="button" class="btn btn-secondary" aria-label="Back to Coping Capacity" id="step2Back">Back</button>
+        <button type="button" class="btn btn-primary" aria-label="Proceed to Sensitivity" id="step2Next">Proceed</button>
+      </section>
+
+      <!-- STEP 3 - SENSITIVITY REDUCTION -->
+      <section class="card p-4 mb-3 hidden fade-in" id="step-3" aria-labelledby="sensitivity-heading">
+        <h2 id="sensitivity-heading">Sensitivity Reduction</h2>
+        <div class="mb-3">
+          <label aria-label="Risk assessment conducted">Has a risk assessment been conducted?
+            <span data-bs-toggle="tooltip" title="Have you formally identified potential risks to your business?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Risk assessment select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Data/system backups in place">Are data/system backups in place?
+            <span data-bs-toggle="tooltip" title="Are regular backups made of critical data and systems?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Backups select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Single points of failure minimized">Are single points of failure minimized?
+            <span data-bs-toggle="tooltip" title="Are there redundancies for critical systems or staff?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Single points of failure select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Critical assets protected">Are critical assets protected?
+            <span data-bs-toggle="tooltip" title="Are your most important assets adequately protected?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Critical assets select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Insurance coverage adequate">Is insurance coverage adequate?
+            <span data-bs-toggle="tooltip" title="Do you have appropriate insurance for your risks?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Insurance select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <button type="button" class="btn btn-secondary" aria-label="Back to Adaptability" id="step3Back">Back</button>
+        <button type="button" class="btn btn-primary" aria-label="Proceed to Exposure" id="step3Next">Proceed</button>
+      </section>
+
+      <!-- STEP 4 - EXPOSURE CONTROL -->
+      <section class="card p-4 mb-3 hidden fade-in" id="step-4" aria-labelledby="exposure-heading">
+        <h2 id="exposure-heading">Exposure Control</h2>
+        <div class="mb-3">
+          <label aria-label="Business located in safe area">Is the business located in a safe area?
+            <span data-bs-toggle="tooltip" title="Is your business at risk of natural or human-made hazards?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Safe area select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Suppliers considered low-risk">Are suppliers considered low-risk?
+            <span data-bs-toggle="tooltip" title="Are your suppliers reliable and stable?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Suppliers select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Utilities resilient">Are utilities resilient?
+            <span data-bs-toggle="tooltip" title="Are your power, water, and other utilities reliable?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Utilities select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Partners prepared for disruptions">Are partners prepared for disruptions?
+            <span data-bs-toggle="tooltip" title="Are your partners ready for crisis situations?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Partners select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <div class="mb-3">
+          <label aria-label="Customer base diverse">Is your customer base diverse?
+            <span data-bs-toggle="tooltip" title="Do you rely on many different types of customers?">(?)</span>
+          </label>
+          <select class="form-select" required aria-label="Customer base select">
+            <option value="">Select (1–5)</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <div class="invalid-feedback">Please select a value.</div>
+        </div>
+        <button type="button" class="btn btn-secondary" aria-label="Back to Sensitivity" id="step4Back">Back</button>
+        <button type="submit" class="btn btn-primary" aria-label="Calculate Resilience">Calculate Resilience</button>
+      </section>
+
+      <!-- STEP 5 - RESULT -->
+      <section id="step-5" class="card p-4 mb-3 hidden fade-in" aria-labelledby="result-heading">
+        <h2 id="result-heading">Your Resilience Score</h2>
+        <div id="score" class="fs-2 fw-bold"></div>
+        <div id="breakdown"></div>
+      </section>
     </form>
 
-    <div id="result" class="card hidden">
-      <h2>Your Resilience Score</h2>
-      <p id="score"></p>
-      <div id="breakdown"></div>
+    <!-- LOADING SPINNER -->
+    <div class="spinner-overlay" id="loadingSpinner" aria-label="Calculating resilience score, please wait">
+      <div class="spinner-border text-primary" role="status" aria-label="Loading"></div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- FOOTER COMPONENT -->
+    <footer class="mt-5 text-center" aria-label="Footer">
+      <small>&copy; 2025 SPARC Resilience Tool</small>
+    </footer>
+
+  </div>
+</main>
+
+<!-- Bootstrap JS for tooltips and interactivity -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Your main script -->
+<script>
+  // Enable Bootstrap tooltips
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+
+  // Step indicator update logic
+  function setStepIndicator(step) {
+    for (let i = 0; i <= 5; i++) {
+      document.getElementById('indicator-' + i).classList.toggle('active', i === step);
+    }
+  }
+
+  // Example real-time validation and step navigation logic
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('sparcForm');
+    const steps = ['step-0', 'step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
+    let currentStep = 0;
+
+    function showStep(step) {
+      steps.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('hidden', idx !== step);
+      });
+      setStepIndicator(step);
+      currentStep = step;
+    }
+
+    // Step navigation event handlers
+    document.getElementById('step0Next').onclick = function () {
+      if (validateSection(document.getElementById('step-0'))) showStep(1);
+    };
+    document.getElementById('step1Back').onclick = function () { showStep(0); };
+    document.getElementById('step1Next').onclick = function () {
+      if (validateSection(document.getElementById('step-1'))) showStep(2);
+    };
+    document.getElementById('step2Back').onclick = function () { showStep(1); };
+    document.getElementById('step2Next').onclick = function () {
+      if (validateSection(document.getElementById('step-2'))) showStep(3);
+    };
+    document.getElementById('step3Back').onclick = function () { showStep(2); };
+    document.getElementById('step3Next').onclick = function () {
+      if (validateSection(document.getElementById('step-3'))) showStep(4);
+    };
+    document.getElementById('step4Back').onclick = function () { showStep(3); };
+
+    // Real-time validation feedback
+    form.querySelectorAll('input, select').forEach(input => {
+      input.addEventListener('input', function () {
+        if (input.checkValidity()) {
+          input.classList.remove('is-invalid');
+        } else {
+          input.classList.add('is-invalid');
+        }
+      });
+    });
+
+    // Validate all fields in a section
+    function validateSection(section) {
+      let valid = true;
+      section.querySelectorAll('input, select').forEach(input => {
+        if (!input.checkValidity()) {
+          input.classList.add('is-invalid');
+          valid = false;
+        } else {
+          input.classList.remove('is-invalid');
+        }
+      });
+      return valid;
+    }
+
+    // Show loading spinner on submit and fake calculation
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      if (!validateSection(document.getElementById('step-4'))) return;
+      document.getElementById('loadingSpinner').classList.add('active');
+      setTimeout(() => {
+        document.getElementById('loadingSpinner').classList.remove('active');
+        // Display result (dummy calculation here; replace with real logic)
+        document.getElementById('score').textContent = '85';
+        document.getElementById('breakdown').innerHTML =
+          '<ul><li>Coping Capacity: 17/25</li><li>Adaptability: 18/25</li><li>Sensitivity: 20/25</li><li>Exposure: 15/25</li></ul>';
+        showStep(5);
+      }, 1500);
+    };
+
+    // Initialize
+    showStep(0);
+  });
+</script>
 </body>
 </html>
