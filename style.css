@@ -67,7 +67,9 @@ button:focus,
 }
 
 .question p {
+  white-space: normal;
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .rating {
