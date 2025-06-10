@@ -1,207 +1,98 @@
-:root {
-  --primary: #007BFF;
-  --primary-dark: #0056b3;
-  --secondary-bg: #f1f1f1;
-  --secondary-border: #ccc;
-  --container-bg: #fff;
-  --background: #f8f9fa;
-  --text-main: #333;
-  --shadow: 0 0 10px rgba(0,0,0,0.1);
-  --border-radius: 5px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--background);
+  background-color: #f8f9fa;
   margin: 0;
   padding: 20px;
-  color: var(--text-main);
 }
 
 .container {
   max-width: 900px;
   margin: 0 auto;
-  background: var(--container-bg);
+  background: #ffffff;
   padding: 30px;
-  box-shadow: var(--shadow);
-  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
 h1, h2 {
   text-align: center;
-  color: var(--text-main);
+  color: #333;
 }
 
-fieldset {
-  border: none;
-  padding: 0;
-  margin-bottom: 30px;
+label {
+  display: block;
+  margin: 20px 0 5px;
+  font-weight: bold;
 }
 
 input[type="text"],
 input[type="email"],
-input[type="tel"] {
+input[type="tel"],
+select {
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   margin-bottom: 15px;
-  border: 1px solid var(--secondary-border);
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  transition: border-color 0.2s;
-}
-
-/* Accessibility: focus styles for inputs and buttons */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-button:focus,
-.btn:focus {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-  border-color: var(--primary);
-}
-
-.question {
-  margin-bottom: 20px;
-}
-
-.question p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.question p {
-  white-space: normal;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.rating {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-}
-
-.rating label {
-  margin-right: 10px;
+  box-sizing: border-box;
 }
 
 button {
-  background-color: var(--primary);
-  color: #fff;
+  background-color: #007BFF;
+  color: white;
   border: none;
-  padding: 15px 30px;
-  border-radius: var(--border-radius);
+  padding: 12px 24px;
+  border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  display: block;
-  margin: 10px auto 0;
-  transition: background 0.3s, opacity 0.2s;
-}
-
-/* Improved color contrast for button hover */
-button:hover,
-button:focus-visible {
-  background-color: var(--primary-dark);
-}
-
-.button-group {
-  margin-top: 15px;
-}
-
-.btn {
+  margin: 10px 5px;
   display: inline-block;
-  text-decoration: none;
-  padding: 10px 16px;
-  margin: 5px 8px 5px 0;
-  border-radius: var(--border-radius);
-  font-weight: bold;
-  transition: background 0.3s, opacity 0.2s;
 }
 
-.btn.primary {
-  background-color: var(--primary);
-  color: #fff;
+button:hover {
+  background-color: #0056b3;
 }
 
-.btn.secondary {
-  background-color: var(--secondary-bg);
-  color: var(--text-main);
-  border: 1px solid var(--secondary-border);
+.card {
+  display: none;
+  background: #fff;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.btn:hover,
-.btn:focus-visible {
-  opacity: 0.9;
-  background-color: var(--primary-dark);
-  color: #fff;
+.card:not(.hidden) {
+  display: block;
 }
 
 #result {
   text-align: center;
-  margin-top: 30px;
 }
 
-/* Responsive Layout for PWA & Mobile Devices */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     padding: 20px;
   }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"] {
+  input, select, button {
     font-size: 16px;
-    padding: 12px;
   }
 
-  .rating {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .rating label {
-    margin-bottom: 8px;
-  }
-
-  button {
-    width: 100%;
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 480px) {
   h1, h2 {
     font-size: 1.5rem;
-  }
-
-  h3 {
-    font-size: 1.2rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  .question {
-    padding-bottom: 15px;
-  }
-}
-
-/* Print Styles */
-@media print {
-  body, .container {
-    background: #fff !important;
-    color: #000 !important;
-    box-shadow: none !important;
-  }
-  button, .btn, nav, .button-group {
-    display: none !important;
-  }
-  input, select, textarea {
-    border: none !important;
-    box-shadow: none !important;
   }
 }
