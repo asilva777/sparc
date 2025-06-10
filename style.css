@@ -1,3 +1,11 @@
+Certainly! Below is the **complete** enhanced `style.css` file for your SPARC project, integrating your requests:
+
+- **One question per line with clear spacing**
+- **Bold labels and uniform dropdown widths**
+- **Each CASE dimension in its own card**
+- **Spacing, line breaks, and visual clarity**
+
+```css
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body {
@@ -21,16 +29,71 @@ h1, h2 {
   color: #333;
 }
 
-label {
-  display: block;
-  margin: 20px 0 5px;
-  font-weight: bold;
+/* CARD STYLING for CASE dimensions */
+.card {
+  display: none; /* Hidden by default, shown as needed */
+  background: #fafdff;
+  border-radius: 8px;
+  padding: 30px 25px 30px 25px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 1px solid #e0e0e0;
 }
 
+.card:not(.hidden) {
+  display: block;
+}
+
+.card-title, .case-title {
+  font-size: 1.28rem;
+  font-weight: bold;
+  margin-bottom: 18px;
+  color: #0056b3;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.card + .card {
+  border-top: 2px solid #f0f0f0;
+}
+
+/* FORM AND QUESTION SPACING */
+.form-group, .question-row {
+  margin-bottom: 24px;
+}
+
+label {
+  display: block;
+  margin: 18px 0 7px;
+  font-weight: bold;
+  font-size: 1.08rem;
+  letter-spacing: 0.2px;
+}
+
+/* UNIFORM INPUTS AND DROPDOWNS */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 select {
+  width: 260px;
+  max-width: 100%;
+  min-width: 180px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  display: block;
+}
+
+select {
+  width: 260px !important;
+}
+
+textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -38,8 +101,17 @@ select {
   border-radius: 5px;
   margin-bottom: 15px;
   box-sizing: border-box;
+  display: block;
+  resize: vertical;
+  min-height: 80px;
 }
 
+input[type="radio"], input[type="checkbox"] {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* BUTTONS */
 button {
   background-color: #007BFF;
   color: white;
@@ -56,19 +128,7 @@ button:hover {
   background-color: #0056b3;
 }
 
-.card {
-  display: none;
-  background: #fff;
-  border-radius: 8px;
-  padding: 25px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.card:not(.hidden) {
-  display: block;
-}
-
+/* RESULT AND LISTS */
 #result {
   text-align: center;
 }
@@ -82,17 +142,36 @@ ul li {
   margin-bottom: 10px;
 }
 
-/* Responsive Design */
+/* LINE BREAKS FOR QUESTIONS */
+input,
+select,
+textarea {
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
   .container {
     padding: 20px;
   }
 
-  input, select, button {
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100% !important;
+    min-width: unset;
+    max-width: unset;
     font-size: 16px;
   }
 
-  h1, h2 {
-    font-size: 1.5rem;
+  .card {
+    padding: 18px 10px;
   }
 }
